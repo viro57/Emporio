@@ -1,2 +1,0 @@
-# Emporio
-Emporio Solidale
