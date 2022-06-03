@@ -1,7 +1,7 @@
 
 import pandas as pd
 import locale
-locale.setlocale(locale.LC_ALL, 'it_IT')
+#locale.setlocale(locale.LC_ALL, 'it_IT')
 # import calendar
 import plotly.graph_objects as go
 import streamlit as st
