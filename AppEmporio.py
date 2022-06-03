@@ -10,9 +10,9 @@ pd.options.display.float_format = '{:,.2f}'.format
 import plotly.express as px  # pip install plotly-express
 import streamlit as st  # pip install streamlit
 import numpy as np
-import locale
-import calendar
-locale.setlocale(locale.LC_ALL, 'it_IT')
+#import locale
+#import calendar
+#locale.setlocale(locale.LC_ALL, 'it_IT')
 
 
 # emojis: https://www.webfx.com/tools/emoji-cheat-sheet/
