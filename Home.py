@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import locale
 import calendar
-locale.setlocale(locale.LC_ALL, 'it_IT')
+#locale.setlocale(locale.LC_ALL, 'it_IT')
 
 st.set_page_config(page_title="Emporio Dashboard",  layout="wide", page_icon="👋")
 
