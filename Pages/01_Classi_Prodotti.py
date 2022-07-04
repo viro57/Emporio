@@ -17,6 +17,7 @@ def get_data_from_excel(name):
         usecols="B:S",
         parse_dates=['Data'],
     )
+
     return df
 
 df = get_data_from_excel("ProdottiUsciti.xlsx")
@@ -51,14 +52,15 @@ fornitori = st.sidebar.multiselect(
     default=df["Fornitori"].unique()
 )
 
-articolo = st.multiselect(
-    "Seleziona Articolo:",
-    options=df["Articolo"].unique(),
-#    default=df["Articolo"].unique()
+
+ClasseTre = st.multiselect(
+    "Seleziona Reparto:",
+    options=df["Gruppo3"].unique(),
+    default=df["Gruppo3"].unique()
 )
 
 df_selection = df.query(
-    "Anno == @anno & Mese == @mese & UM==@um & Articolo==@articolo & Fornitori==@fornitori"
+    "Anno == @anno & Mese == @mese & UM==@um & Gruppo3==@ClasseTre & Fornitori==@fornitori"
 )
 
 
@@ -86,14 +88,12 @@ with right1_column:
 
 # SALES BY PRODUCT LINE [BAR CHART]
 Lista_Gruppo1_Punti= (
-    df_selection.groupby(by=["Articolo"]).sum()[["Punti"]].sort_values(by="Articolo")
+    df_selection.groupby(by=["Gruppo1"]).sum()[["Punti"]].sort_values(by="Gruppo1")
 )
 
 Lista_Gruppo1_Qta= (
-    df_selection.groupby(by=["Articolo"]).sum()[["Quantita"]].sort_values(by="Articolo")
+    df_selection.groupby(by=["Gruppo1"]).sum()[["Quantita"]].sort_values(by="Gruppo1")
 )
-
-#Lista_Gruppo1_QTa['Quantita'].round()
 
 st.markdown("""---""")
 
@@ -104,10 +104,10 @@ fig_Gruppo1_qta = px.bar(
     y="Quantita",
     x=Lista_Gruppo1_Qta.index,
     orientation="v",
-    title="<b>Articoli </b>",
+    title="<b>Classi di Prodotti </b>",
     color_discrete_sequence=["#0083B8"] * len(Lista_Gruppo1_Qta),
     template="plotly_white",
-    labels={'Articoli': 'Numero'}, height=400
+    labels={'Classi di Prodotto': 'Numero'}, height=400
 )
 fig_Gruppo1_qta.update_layout(
     plot_bgcolor="rgba(0,0,0,0)",
@@ -127,10 +127,10 @@ fig_Gruppo1_punti = px.bar(
     y="Punti",
     x=Lista_Gruppo1_Punti.index,
     orientation="v",
-    title="<b>Articoli</b>",
+    title="<b>Classi di Prodotto</b>",
     color_discrete_sequence=["#0083B8"] * len(Lista_Gruppo1_Punti),
     template="plotly_white",
-    labels={'Articoli': 'Numero'}, height=400, width=1600,
+    labels={'Classi di Prodotto': 'Numero'}, height=400, width=1600,
 
 )
 fig_Gruppo1_punti.update_layout(
