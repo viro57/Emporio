@@ -5,10 +5,10 @@ import streamlit as st
 import numpy as np
 import locale
 import calendar
-locale.setlocale(locale.LC_ALL, 'it_IT')
+#locale.setlocale(locale.LC_ALL, 'it_IT')
 
 # ---- READ EXCEL ----
-@st.cache
+@s#t.cache
 def get_data_from_excel(name):
     df = pd.read_excel(
         io=name,
