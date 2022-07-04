@@ -8,7 +8,7 @@ import calendar
 #locale.setlocale(locale.LC_ALL, 'it_IT')
 
 # ---- READ EXCEL ----
-@s#t.cache
+@set.cache
 def get_data_from_excel(name):
     df = pd.read_excel(
         io=name,
